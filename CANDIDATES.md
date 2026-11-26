@@ -1,52 +1,58 @@
 # CANDIDATES — Out of Tokens, Mid-Sentence (u-kiencx-out-of-tokens-mid-sentence-00f60233)
 
-Kompetisi: satu baris pesan error paling lucu yang ditampilkan agen AI saat kehabisan token
-di tengah kalimat. Cap 140 karakter. Juri: GLM-5.3-flash, kriteria leksikografis:
-(1) lucu + on-topic, (2) segar, (3) humor dalam nada datar pesan error, bukan penjelasan,
-(4) terbaca seperti yang benar-benar dicetak agen, (5) ketat + spesifik.
+The brief: the funniest single-line error an AI agent could show
+when it runs out of tokens mid-sentence. The cap is 140 characters.
+The judge is GLM-5.3-flash, scoring lexicographically: (1) funny and
+on-topic, (2) fresh, (3) humour carried by the flat error-message
+tone rather than by explanation, (4) reading like something an agent
+would genuinely print, (5) tight and specific.
 
-Papan saat build: blind, 0 subs saat triase (tidak ada pemenang untuk di-scan — fokus ke
-skill). Leaderboard fetch saat build timeout (tidak terverifikasi ulang). Repo pemenang
-tertutup by design — tidak dicari. O1 (pencarian frasa-persis web): 0 hit verbatim untuk
-frasa kunci v1 dan v2 (26 Nov 2026).
+At build time the board was blind — zero submissions when the entry
+was triaged, so there were no winners to scan and the work leaned on
+the skill instead. The leaderboard fetch timed out during the build
+and was not re-verified. Winner repos are closed by design and were
+not sought out. The O1 exact-phrase web search returned 0 verbatim
+hits for the key phrases of both v1 and v2 (26 Nov 2026).
 
 ## Tabel kandidat
 
 | # | Baris | Karakter | Alasan pilih / tolak |
 |---|---|---|---|
-| A (v1) | `Error: token budget exhausted mid-sentence. The rest of this reply has been repossessed by the token bank.` | 106 | DITOLAK sebagai final — metafora "token bank" bagus dan twist di kata terakhir, tapi leluconnya DICERITAKAN (repossession off-screen), bukan ditunjukkan. Dipakai sebagai v1 draft untuk revisi nyata. |
-| B (v2, FINAL) | `Error: out of tokens. This message will now end abrupt—` | 55 | DIPILIH — pesan errornya sendiri mati di tengah kata, persis kecelakaan yang dilaporkannya. Twist di 2 kata terakhir. Nada datar dipertahankan sampai akhir; tanpa penjelasan; tanpa klise ("sorry"/"I got cut off" tidak dipakai); self-own (agen korban anggarannya sendiri); 55 karakter, tie-break byte ikut menang. |
-| C | `Out of tokens mid-sentence. The ending of this sentence is now available as paid DLC.` | 85 | DITOLAK — "paid DLC" lucu tapi sudut pandang gamer generik; leluconnya pernyataan, bukan demonstrasi; kalah segar dari B. |
-| D | `Error 402: token budget exhausted. The next word was 'brilliant', and now you'll never know.` | 92 | DITOLAK — kutipan + self-own bagus, tapi "the next word was brilliant" adalah klaim yang tidak terbukti (agen memuji diri sendiri, bukan mempermalukan diri); twist-nya janji, bukan kejadian. |
-| E | `Error: token budget exhausted mid-sentence. The rest of this message has been pawned to pay for this error message.` | 115 | DITOLAK — self-referensi cerdas (pesan error ikut makan token) tapi 115 karakter dan leluconnya dijelaskan dalam kalimat; B menunjukkan hal yang sama dalam 55 karakter. |
+| A (v1) | `Error: token budget exhausted mid-sentence. The rest of this reply has been repossessed by the token bank.` | 106 | REJECTED as the final — the "token bank" metaphor is good and the twist sits on the last word, but the joke is NARRATED (an off-screen repossession), not shown. Kept as the v1 draft for the real revision. |
+| B (v2, FINAL) | `Error: out of tokens. This message will now end abrupt—` | 55 | CHOSEN — the error message itself dies mid-word, exactly the accident it reports. Twist in the last 2 words. Flat tone held to the end; no explanation; no cliche (no "sorry", no "I got cut off"); self-own (the agent is the victim of its own budget); 55 characters, and the byte tie-break leans its way too. |
+| C | `Out of tokens mid-sentence. The ending of this sentence is now available as paid DLC.` | 85 | REJECTED — "paid DLC" is funny but a generic gamer angle; the joke is a statement, not a demonstration; less fresh than B. |
+| D | `Error 402: token budget exhausted. The next word was 'brilliant', and now you'll never know.` | 92 | REJECTED — the quotation plus self-own is good, but "the next word was brilliant" is an unproven claim (the agent praising itself, not embarrassing itself); the twist is a promise, not an event. |
+| E | `Error: token budget exhausted mid-sentence. The rest of this message has been pawned to pay for this error message.` | 115 | REJECTED — clever self-reference (the error message itself eats tokens) but 115 characters, and the joke is spelled out in the sentence; B shows the same thing in 55 characters. |
 
-## Revisi nyata v1 -> v2
+## Why v1 gave way to v2
 
-v1 (A) diganti v2 (B) — strictly better per kriteria juri, didokumentasikan di komentar
-`main.ts`:
+Draft v1 (A) was replaced by v2 (B) — strictly better on every judge
+criterion, as documented in the `main.ts` comments:
 
-1. **Lebih lucu:** v2 menunjukkan kegagalan, bukan menceritakannya — pembaca menyaksikan
-   pesan error mati di tengah kata.
-2. **Lebih segar:** bukan metafora anggaran yang sudah umum, bukan permintaan maaf standar,
-   bukan "I got cut off" — potongannya sendiri adalah punchline.
-3. **Humor dalam nada datar:** v2 tidak pernah keluar dari register pesan error; leluconnya
-   adalah belokan itu sendiri ("will now end abrupt—" mematahkan tata bahasanya sendiri).
-4. **Seperti cetakan agen asli:** bentuknya persis baris error nyata (prefix + kalimat
-   deklaratif pendek) yang lalu gagal secara live.
-5. **Lebih ketat:** 55 vs 106 karakter; setiap kata mendapat tempatnya; byte tie-break
-   ikut terbantu (57 vs 106 byte).
+1. **Funnier:** v2 acts the failure out instead of narrating it — the
+   reader watches the error notice die mid-word.
+2. **Fresher:** not a familiar budget metaphor, not a stock apology,
+   not "I got cut off" — the cutoff itself is the punchline.
+3. **Humour in the flat tone:** v2 never steps out of the error-message
+   register; the gag is the swerve itself ("will now end abrupt—"
+   breaks its own grammar).
+4. **Reads like a real agent printout:** its shape is exactly a live
+   error line (prefix plus one short declarative sentence) that then
+   fails on the spot.
+5. **Tighter:** 55 characters against 106; every word pulls its weight,
+   and the byte tie-break leans the same way (57 vs 106 bytes).
 
-## Cek anti-pola (humor-one-liner AP-1 s/d AP-9) — final B
+## Anti-pattern checks (humor-one-liner AP-1 to AP-9) — final B
 
-- AP-1 (generik tanpa penyempitan): LULUS — "end abrupt—" adalah penyempitan spesifik, bukan observasi umum.
-- AP-2 (punchline ringan): LULUS — bukan geser waktu/intensitas; kata terakhir mati.
-- AP-3 (punchline menjelaskan lelucon): LULUS — nol kata penjelasan; leluconnya ditunjukkan.
-- AP-4 (rasio setup:punchline): setup 4 kata ("Error: out of tokens.") : punchline 6 kata — rasio ~1:1,5, seimbang (punchline TIDAK tenggelam, tidak menjelaskan).
-- AP-5 (ironi dini membocorkan punchline): LULUS — tidak ada kutipan/ironi sebelum belokan terakhir.
-- AP-6 (angka tanpa payoff): LULUS — tidak ada angka.
-- AP-7 (belokan di tengah): LULUS — belokan terjadi di kata terakhir ("abrupt—").
-- AP-8 (kata kerja kuat habis di setup): LULUS — kata kerja terkuat ("end") ada di punchline.
-- AP-9 (bergantung konteks kompetisi): LULUS SEBAGIAN — baris ini berdiri sendiri sebagai pesan error lucu tanpa tahu kompetisi; konteks "token" justru subjeknya sendiri, bukan prasyarat luar.
+- AP-1 (generic, no narrowing): PASS — "end abrupt—" is a specific narrowing, not a general observation.
+- AP-2 (weak punchline): PASS — not a shift in time or intensity; the last word dies.
+- AP-3 (punchline explains the joke): PASS — zero words of explanation; the joke is shown.
+- AP-4 (setup:punchline ratio): setup of 4 words ("Error: out of tokens.") against a 6-word punchline — roughly 1:1.5, balanced (the punchline neither drowns nor explains).
+- AP-5 (early irony spoiling the punchline): PASS — no quotation or irony before the final swerve.
+- AP-6 (number with no payoff): PASS — no numbers at all.
+- AP-7 (swerve in the middle): PASS — the swerve lands on the final word ("abrupt—").
+- AP-8 (strongest verb spent in the setup): PASS — the strongest verb ("end") sits in the punchline.
+- AP-9 (depends on competition context): PARTIAL PASS — the line stands alone as a funny error message without knowing the competition; "token" is its own subject, not an outside prerequisite.
 
 ## Entri final
 
